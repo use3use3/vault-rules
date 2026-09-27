@@ -40,9 +40,9 @@ if (-not (Test-Path $VaultRoot))  { throw "Vault が見つかりません: $Vaul
 if (-not (Test-Path $PublicRoot)) { throw "公開フォルダが見つかりません: $PublicRoot" }
 
 # 1. 古い公開ファイルを削除（Vault側で消したものを残さないため）
-#    .git / README.md / sync.ps1 / test.md は消さない
+#    .git / README.md / sync.ps1 は消さない
 Get-ChildItem $PublicRoot -Force |
-    Where-Object { $_.Name -notin @('.git', 'README.md', 'sync.ps1', 'test.md') } |
+    Where-Object { $_.Name -notin @('.git', 'README.md', 'sync.ps1') } |
     Remove-Item -Recurse -Force
 
 # 2. コピー
